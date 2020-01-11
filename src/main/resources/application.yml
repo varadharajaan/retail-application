@@ -1,0 +1,65 @@
+spring:
+  main:
+    banner-mode: "off"
+  application:
+    name: retail-demo
+
+  datasource:
+      url: jdbc:h2:mem:testdb
+      driver-class-name: org.h2.Driver
+      username: sa
+      password:
+  jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+      open-in-view: false
+      show-sql: true
+      properties:
+          hibernate:
+              format_sql: true
+  h2:
+      console:
+          enabled: true
+          path: /h2-console
+  security:
+      user:
+          name: actuator
+          password: actuator
+          roles: ACTUATOR_ADMIN
+server:
+  port: 8080
+info:
+    app:
+        description: '@project.description@'
+        encoding: '@project.build.sourceEncoding@'
+        java:
+            version: '@java.version@'
+        name: Coding Challenge
+        version: '@project.version@'
+logging:
+    file:
+        name: logFile.log
+    level:
+        org:
+            springframework: ERROR
+            springframework.boot.test.context.SpringBootTestContextBootstrapper: WARN
+            springframework.test.context.support.AbstractContextLoader: WARN
+        com.retail.demo: INFO
+    pattern:
+        console: '%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n'
+        file: '%d %p %c{1.} [%t] %m%n'
+management:
+    endpoint:
+        health:
+            show-details: always
+        shutdown:
+            enabled: true
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+    metrics:
+        export:
+            prometheus:
+                enabled: true
+project:
+    name: '"Coding Challenge"'
