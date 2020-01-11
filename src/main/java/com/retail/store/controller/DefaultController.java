@@ -9,7 +9,7 @@ public class DefaultController {
 
     @RequestMapping("/")
     public String firstPage() {
-        return "Hello medicalStore application successfully deployed and started...";
+        return "Hello Retailstore application successfully deployed and started...";
     }
 
 
