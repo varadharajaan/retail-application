@@ -2,6 +2,7 @@ package com.retail.store.service.discount;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.retail.store.domain.bill.Bill;
@@ -92,6 +93,17 @@ public class DiscountEngine {
                 if(isCustomerSince(user.getJoinDate(), 0)) {
 
                      DiscountRange discountRangeBy = discountRepository.findDiscountRangeBy(UserType.REGULAR, item.getPrice());
+                     
+                     List<DiscountRange> dis = discountRepository.findAll();
+                     List<Double> disc = new ArrayList<>();
+                     dis.forEach(s-> disc.add(s.getDiscount()));
+
+                     double rem;
+                    for (Double d: disc) {
+                        rem = d-item.getPrice();
+
+
+                    }
                     if(null!=discountRangeBy)
                     discount = discountRangeBy.getDiscount();
                 }
